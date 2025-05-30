@@ -208,6 +208,10 @@
             color: #38a169;
         }
         
+        .pdf-upcoming {
+            color: #ed8936;
+        }
+        
         .download-btn {
             background: linear-gradient(135deg, #48bb78, #38a169);
             color: white;
@@ -241,6 +245,159 @@
             transform: translateY(-2px);
         }
         
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .tool-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-image {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .tool-name {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+        
+        .tool-status {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .sold-out {
+            background: #e53e3e;
+        }
+        
+        .upcoming {
+            background: #ed8936;
+        }
+        
+        .available {
+            background: #38a169;
+        }
+        
+        .updates-list {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .update-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .update-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .update-title {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+        
+        .update-desc {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        .support-section {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .contact-info h4 {
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .address-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .address-item h4 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .address-text {
+            color: #718096;
+            line-height: 1.5;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 margin: 20px;
@@ -257,6 +414,10 @@
             
             .country-code {
                 flex: 1;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
@@ -314,7 +475,6 @@
             <div class="dashboard-buttons">
                 <button class="dash-btn" onclick="showSection('pdfs')">📄 PDFs</button>
                 <button class="dash-btn" onclick="showSection('tools')">🔧 Tools</button>
-                <button class="dash-btn" onclick="showSection('parts')">📱 Parts</button>
                 <button class="dash-btn" onclick="showSection('support')">💬 Support</button>
                 <button class="dash-btn" onclick="showSection('updates')">🔔 Updates</button>
             </div>
@@ -325,25 +485,29 @@
             <h3>📄 Monthly PDF Documents</h3>
             <div class="pdf-grid">
                 <div class="pdf-item">
-                    <h4>January 2024</h4>
+                    <h4>January 2025</h4>
                     <p class="pdf-status">PDF not available - Check current month updates</p>
                 </div>
                 <div class="pdf-item">
-                    <h4>February 2024</h4>
+                    <h4>February 2025</h4>
                     <p class="pdf-status">PDF not available - Check current month updates</p>
                 </div>
                 <div class="pdf-item">
-                    <h4>March 2024</h4>
+                    <h4>March 2025</h4>
                     <p class="pdf-status">PDF not available - Check current month updates</p>
                 </div>
                 <div class="pdf-item">
-                    <h4>April 2024</h4>
+                    <h4>April 2025</h4>
                     <p class="pdf-status">PDF not available - Check current month updates</p>
                 </div>
                 <div class="pdf-item">
-                    <h4>May 2024</h4>
+                    <h4>May 2025</h4>
                     <p class="pdf-status pdf-available">PDF Available for Download</p>
                     <button class="download-btn" onclick="downloadPDF()">Download May PDF</button>
+                </div>
+                <div class="pdf-item">
+                    <h4>June 2025</h4>
+                    <p class="pdf-status pdf-upcoming">PDF not available - Coming Soon</p>
                 </div>
             </div>
             <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
@@ -352,28 +516,104 @@
         <!-- Tools Section -->
         <div id="tools" class="content-section">
             <h3>🔧 Tools & Equipment</h3>
-            <p>Tools section coming soon. Here you'll find information about phone repair tools and equipment.</p>
-            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
-        </div>
-        
-        <!-- Parts Section -->
-        <div id="parts" class="content-section">
-            <h3>📱 Spare Parts</h3>
-            <p>Parts section coming soon. Browse our extensive collection of phone spare parts.</p>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <div class="tool-image">🔧</div>
+                    <div class="tool-name">Screwdriver Set</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🔨</div>
+                    <div class="tool-name">Opening Tools</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🎯</div>
+                    <div class="tool-name">Suction Cups</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">⚡</div>
+                    <div class="tool-name">Heat Gun</div>
+                    <div class="tool-status sold-out">Sold Out</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🔍</div>
+                    <div class="tool-name">Magnifying Glass</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🧲</div>
+                    <div class="tool-name">Magnetic Mat</div>
+                    <div class="tool-status upcoming">Upcoming</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">✂️</div>
+                    <div class="tool-name">Precision Tweezers</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🔋</div>
+                    <div class="tool-name">Multimeter</div>
+                    <div class="tool-status sold-out">Sold Out</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">🎪</div>
+                    <div class="tool-name">Screen Separator</div>
+                    <div class="tool-status upcoming">Upcoming</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-image">💡</div>
+                    <div class="tool-name">LED Work Light</div>
+                    <div class="tool-status available">Available</div>
+                </div>
+            </div>
             <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
         </div>
         
         <!-- Support Section -->
         <div id="support" class="content-section">
             <h3>💬 Customer Support</h3>
-            <p>Support section coming soon. Get help with your orders and technical questions.</p>
+            <div class="support-section">
+                <div class="contact-item">
+                    <div class="contact-icon">👤</div>
+                    <div class="contact-info">
+                        <h4>Prince Part Fixits</h4>
+                        <a href="tel:+918979135534">+91 89791 35534</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">👤</div>
+                    <div class="contact-info">
+                        <h4>Mohit Part Fixits</h4>
+                        <a href="tel:+919582684228">+91 95826 84228</a>
+                    </div>
+                </div>
+                <div class="address-item">
+                    <h4>📍 Shop Address</h4>
+                    <div class="address-text">
+                        2850, Gali Number 17, Block 34P,<br>
+                        New Delhi 110005, DL, India<br>
+                        Max Plaza Basement Part Fixits
+                    </div>
+                </div>
+            </div>
             <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
         </div>
         
         <!-- Updates Section -->
         <div id="updates" class="content-section">
             <h3>🔔 Latest Updates</h3>
-            <p>Updates section coming soon. Stay informed about new products and announcements.</p>
+            <div class="updates-list">
+                <div class="update-item">
+                    <div class="update-title">🌞 Summer Maha Sale</div>
+                    <div class="update-desc">Get up to 15% off on all phone repair tools and spare parts! Valid until 7th June only. Don't miss this amazing offer!</div>
+                </div>
+                <div class="update-item">
+                    <div class="update-title">🆕 New Stock Arrival</div>
+                    <div class="update-desc">Fresh stock of iPhone 15 series spare parts now available! Premium quality screens, batteries, and camera modules in stock.</div>
+                </div>
+            </div>
             <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
         </div>
     </div>
@@ -481,7 +721,7 @@
             // Create a temporary link element
             const link = document.createElement('a');
             link.href = pdfUrl;
-            link.download = 'Part_Fixits_May_2024.pdf';
+            link.download = 'Part_Fixits_May_2025.pdf';
             link.target = '_blank';
             
             // Trigger download
@@ -490,7 +730,7 @@
             document.body.removeChild(link);
             
             // Show confirmation
-            alert('May 2024 PDF download started!');
+            alert('May 2025 PDF download started!');
         }
         
         // Add some interactive animations
@@ -506,4 +746,4 @@
         });
     </script>
 </body>
-</html>pp
+</html>
