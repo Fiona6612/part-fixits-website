@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part Fixits - Phone Spare Parts Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo p {
+            color: #718096;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .phone-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .country-code {
+            flex: 0 0 120px;
+        }
+        
+        .phone-number {
+            flex: 1;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .dashboard {
+            display: none;
+            text-align: center;
+        }
+        
+        .welcome-msg {
+            margin-bottom: 30px;
+        }
+        
+        .welcome-msg h2 {
+            color: #4a5568;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .dash-btn {
+            padding: 20px;
+            background: linear-gradient(135deg, #4fd1c7, #2d3748);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .dash-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 209, 199, 0.4);
+        }
+        
+        .content-section {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .content-section h3 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .pdf-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .pdf-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pdf-item h4 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+        
+        .pdf-status {
+            color: #e53e3e;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .pdf-available {
+            color: #38a169;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+        
+        .back-btn {
+            background: #718096;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #4a5568;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .phone-input {
+                flex-direction: column;
+            }
+            
+            .country-code {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="loginForm">
+            <div class="logo">
+                <h1>Part Fixits</h1>
+                <p>Phone Spare Parts & Tools</p>
+            </div>
+            
+            <form id="loginFormElement">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <div class="phone-input">
+                        <select id="countryCode" class="country-code" required>
+                            <option value="+91">+91 (India)</option>
+                            <option value="+1">+1 (US/CA)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+86">+86 (China)</option>
+                            <option value="+81">+81 (Japan)</option>
+                            <option value="+49">+49 (Germany)</option>
+                            <option value="+33">+33 (France)</option>
+                            <option value="+39">+39 (Italy)</option>
+                            <option value="+34">+34 (Spain)</option>
+                            <option value="+7">+7 (Russia)</option>
+                        </select>
+                        <input type="tel" id="phone" class="phone-number" placeholder="Enter phone number" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="state">State/Province</label>
+                    <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                </div>
+                
+                <button type="button" class="login-btn" onclick="handleLogin()">Login</button>
+            </form>
+        </div>
+        
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard">
+            <div class="welcome-msg">
+                <h2>Welcome, <span id="userName"></span>!</h2>
+                <p>Select an option to continue</p>
+            </div>
+            
+            <div class="dashboard-buttons">
+                <button class="dash-btn" onclick="showSection('pdfs')">📄 PDFs</button>
+                <button class="dash-btn" onclick="showSection('tools')">🔧 Tools</button>
+                <button class="dash-btn" onclick="showSection('parts')">📱 Parts</button>
+                <button class="dash-btn" onclick="showSection('support')">💬 Support</button>
+                <button class="dash-btn" onclick="showSection('updates')">🔔 Updates</button>
+            </div>
+        </div>
+        
+        <!-- PDF Section -->
+        <div id="pdfs" class="content-section">
+            <h3>📄 Monthly PDF Documents</h3>
+            <div class="pdf-grid">
+                <div class="pdf-item">
+                    <h4>January 2024</h4>
+                    <p class="pdf-status">PDF not available - Check current month updates</p>
+                </div>
+                <div class="pdf-item">
+                    <h4>February 2024</h4>
+                    <p class="pdf-status">PDF not available - Check current month updates</p>
+                </div>
+                <div class="pdf-item">
+                    <h4>March 2024</h4>
+                    <p class="pdf-status">PDF not available - Check current month updates</p>
+                </div>
+                <div class="pdf-item">
+                    <h4>April 2024</h4>
+                    <p class="pdf-status">PDF not available - Check current month updates</p>
+                </div>
+                <div class="pdf-item">
+                    <h4>May 2024</h4>
+                    <p class="pdf-status pdf-available">PDF Available for Download</p>
+                    <button class="download-btn" onclick="downloadPDF()">Download May PDF</button>
+                </div>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        </div>
+        
+        <!-- Tools Section -->
+        <div id="tools" class="content-section">
+            <h3>🔧 Tools & Equipment</h3>
+            <p>Tools section coming soon. Here you'll find information about phone repair tools and equipment.</p>
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        </div>
+        
+        <!-- Parts Section -->
+        <div id="parts" class="content-section">
+            <h3>📱 Spare Parts</h3>
+            <p>Parts section coming soon. Browse our extensive collection of phone spare parts.</p>
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        </div>
+        
+        <!-- Support Section -->
+        <div id="support" class="content-section">
+            <h3>💬 Customer Support</h3>
+            <p>Support section coming soon. Get help with your orders and technical questions.</p>
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        </div>
+        
+        <!-- Updates Section -->
+        <div id="updates" class="content-section">
+            <h3>🔔 Latest Updates</h3>
+            <p>Updates section coming soon. Stay informed about new products and announcements.</p>
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = {};
+        
+        // Simple login function
+        function handleLogin() {
+            // Get form data
+            const name = document.getElementById('name').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phone').value.trim();
+            const state = document.getElementById('state').value.trim();
+            
+            // Check if fields are filled
+            if (!name) {
+                alert('Please enter your name!');
+                return;
+            }
+            if (!phone) {
+                alert('Please enter your phone number!');
+                return;
+            }
+            if (!state) {
+                alert('Please enter your state!');
+                return;
+            }
+            
+            // Store user data
+            currentUser = {
+                name: name,
+                countryCode: countryCode,
+                phone: phone,
+                state: state
+            };
+            
+            // Hide login form and show dashboard
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('userName').textContent = name;
+        }
+        
+        // Handle login form submission
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phone').value.trim();
+            const state = document.getElementById('state').value.trim();
+            
+            // Validate fields
+            if (!name || !phone || !state) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
+            // Store user data
+            currentUser = {
+                name: name,
+                countryCode: countryCode,
+                phone: phone,
+                state: state
+            };
+            
+            // Show dashboard
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('userName').textContent = name;
+        });
+        
+        // Show specific section
+        function showSection(sectionId) {
+            // Hide dashboard
+            document.getElementById('dashboard').style.display = 'none';
+            
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        // Go back to dashboard
+        function goBack() {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show dashboard
+            document.getElementById('dashboard').style.display = 'block';
+        }
+        
+        // Download PDF function
+        function downloadPDF() {
+            const pdfUrl = 'https://fixitpdf.in/pdfs/maypdf._compressed_1.pdf';
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'Part_Fixits_May_2024.pdf';
+            link.target = '_blank';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show confirmation
+            alert('May 2024 PDF download started!');
+        }
+        
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to logo
+            const logo = document.querySelector('.logo h1');
+            setInterval(() => {
+                logo.style.transform = 'translateY(-2px)';
+                setTimeout(() => {
+                    logo.style.transform = 'translateY(0px)';
+                }, 1000);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>pp
